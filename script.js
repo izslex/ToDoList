@@ -10,11 +10,17 @@ const taskTemplate = document.getElementById('task-template')
 const newTaskForm = document.querySelector('[data-new-task-form]')
 const newTaskInput = document.querySelector('[data-new-task-input]')
 const clearCompleteTasksButton = document.querySelector('[data-clear-complete-tasks-button]')								//Константы для взаимодействия с .html файлом
+const closeListButton = document.querySelector('[data-close-list-button]')
 
 const LOCAL_STORAGE_LIST_KEY = 'task.lists'
 const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = 'task.selectedListId'
 let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || []
 let selectedListId = localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY)										
+
+closeListButton.addEventListener('click', e => {
+  selectedListId = null
+  saveAndRender()
+})
 
 listsContainer.addEventListener('click', e => { //Выбор листа по клику
   if (e.target.tagName.toLowerCase() === 'li') {
@@ -92,7 +98,7 @@ function render() { //Отображает выбранный лист
   renderLists()
 
   const selectedList = lists.find(list => list.id === selectedListId)
-  if (selectedListId == null) {
+  if (selectedListId == null || selectedListId == 'null') {
     listDisplayContainer.style.display = 'none'
   } else {
     listDisplayContainer.style.display = ''
