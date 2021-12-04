@@ -62,7 +62,7 @@
     .todo-body {
         display: flex;
         flex-direction: column-reverse;
-        justify-content: space-between;
+        justify-content: start;
         padding: 0;
         height: calc(100vh - 6.1em);
     }
