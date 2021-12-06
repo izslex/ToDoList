@@ -25,7 +25,8 @@ const LANGUAGE_PACK_RU = [
   'Очистить выполненное',
   'Удалить лист',
   'Закрыть лист',
-  'Switch to English'
+  'Switch to',
+  'English'
 ]
 const LANGUAGE_PACK_EN = [
   'Lists',
@@ -36,7 +37,8 @@ const LANGUAGE_PACK_EN = [
   'Clear completed',
   'Remove list',
   'Close list',
-  'Переключиться на Русский'
+  'Переключиться на',
+  'Русский'
 ]
 
 const LOCAL_STORAGE_LANG_KEY = 'language'
@@ -140,7 +142,8 @@ function renderLanguage() {
   clearCompleteTasksButton.innerText = lang_pack[5]
   deleteListButton.innerText = lang_pack[6]
   closeListButton.innerText = lang_pack[7]
-  languageSelector.querySelector('p').innerHTML = lang_pack[8]
+  languageSelector.querySelector(':first-child').innerHTML = lang_pack[8]
+  languageSelector.querySelector(':last-child').innerHTML = lang_pack[9]
 }
 
 function render() { //Отображает выбранный лист

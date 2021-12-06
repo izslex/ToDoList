@@ -90,8 +90,16 @@
     /* style for language switcher */
 
     [language-selector] {
+        position: absolute;
         bottom: initial;
         right: 0;
         top: 0;
+    }
+    
+}
+
+@media (max-width: 400px) {
+    [language-selector] :first-child {
+        display: none;
     }
 }

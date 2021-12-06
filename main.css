@@ -255,6 +255,11 @@ form {
   font-size: .75em;
   bottom: 0;
   margin: 1em;
+  display: flex;
+}
+
+[language-selector] :first-child {
+  margin-right: .3em;
 }
 
 [language-selector]:hover {
