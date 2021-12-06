@@ -157,8 +157,10 @@ function render() { //Отображает выбранный лист
   const selectedList = lists.find(list => list.id === selectedListId)
   if (selectedListId == null || selectedListId == 'null') {
     listDisplayContainer.style.display = 'none'
+    document.querySelector('body').style.overflow = ''
   } else {
     listDisplayContainer.style.display = ''
+    document.querySelector('body').style.overflow = 'hidden'
     listTitleElement.innerText = selectedList.name
     renderTaskCount(selectedList)
     clearElement(tasksContainer)
