@@ -73,13 +73,13 @@
     }
 
     .delete-stuff {
-        background: var(--clr-primary);
         position: initial;
         padding: .5em 0;
+        background: var(--clr-light);
     }
 
     .delete-stuff button {
-        background: var(--clr-primary-light);
+        background: var(--clr-primary);
         padding: .5em;
         border-radius: 1em;
     }
