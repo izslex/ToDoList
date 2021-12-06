@@ -79,7 +79,8 @@
     }
 
     .delete-stuff button {
-        background: var(--clr-primary);
+        background: var(--clr-primary-light) !important;
+        opacity: 1 !important;
         padding: .5em;
         border-radius: 1em;
     }
