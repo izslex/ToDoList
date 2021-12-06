@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,6 +14,10 @@
   </head>
 
   <body>
+    <div language-selector>
+      <p>Switch to English</h2>
+    </div>
+
     <div class="all-tasks">
       <h2 class="task-list-title">Листы</h2>
       <ul class="task-list" data-lists></ul>
@@ -33,7 +37,11 @@
     <div class="todo-list" data-list-display-container>
       <div class="todo-header">
         <h2 class="list-title" data-list-title></h2>
-        <p class="task-count" data-list-count></p>
+        <div class="task-count-container">
+          <p>Осталось</p>
+          <p class="task-count" data-list-count></p>
+          <p>задач</p>
+        </div>
       </div>
 	  
 

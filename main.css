@@ -128,8 +128,14 @@ form {
 }
 
 .task-count {
-  margin: 0;
+  margin-left: .5em;
+  margin-right: .5em;
+}
+
+.task-count-container {
+  display: flex;
   font-size: 1rem;
+  margin: 0;
 }
 
 .todo-body {
@@ -238,3 +244,25 @@ form {
   -webkit-transform-origin: left;
           transform-origin: left;
 } /*Конец важной херни для перечёркивания задач*/
+
+/* Переключатель языка */
+
+[language-selector] {
+  position: fixed;
+  padding: 0 1em;
+  border: .2em solid var(--clr-light);
+  border-radius: 1em;
+  font-size: .75em;
+  bottom: 0;
+  margin: 1em;
+}
+
+[language-selector]:hover {
+  background: var(--clr-light);
+}
+
+[language-selector]:hover p {
+  color: var(--clr-primary);
+}
+
+/* Конец переключателя языка */

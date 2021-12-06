@@ -87,4 +87,11 @@
 
     .task:last-child { margin: 0; }
 
+    /* style for language switcher */
+
+    [language-selector] {
+        bottom: initial;
+        right: 0;
+        top: 0;
+    }
 }

@@ -11,11 +11,46 @@ const newTaskForm = document.querySelector('[data-new-task-form]')
 const newTaskInput = document.querySelector('[data-new-task-input]')
 const clearCompleteTasksButton = document.querySelector('[data-clear-complete-tasks-button]')								//Константы для взаимодействия с .html файлом
 const closeListButton = document.querySelector('[data-close-list-button]')
+const languageSelector = document.querySelector('[language-selector]')
+const htmlNode = document.querySelector('html')
+const taskListTitle = document.querySelector('.task-list-title')
+const taskCountContainer = document.querySelector('.task-count-container')
 
+const LANGUAGE_PACK_RU = [
+  'Листы',
+  'Новый лист',
+  'Осталось',
+  'задач',
+  'Новая задача',
+  'Очистить выполненное',
+  'Удалить лист',
+  'Закрыть лист',
+  'Switch to English'
+]
+const LANGUAGE_PACK_EN = [
+  'Lists',
+  'New list',
+  'Lost',
+  'tasks',
+  'New task',
+  'Clear completed',
+  'Remove list',
+  'Close list',
+  'Переключиться на Русский'
+]
+
+const LOCAL_STORAGE_LANG_KEY = 'language'
 const LOCAL_STORAGE_LIST_KEY = 'task.lists'
 const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = 'task.selectedListId'
 let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || []
 let selectedListId = localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY)										
+
+languageSelector.addEventListener('click', e => {
+  const lang = htmlNode.getAttribute('lang') == 'ru' ? 'en' : 'ru'
+  localStorage.setItem(LOCAL_STORAGE_LANG_KEY, lang)
+  htmlNode.setAttribute('lang', lang)
+  renderLanguage()
+})
 
 closeListButton.addEventListener('click', e => {
   selectedListId = null
@@ -93,7 +128,26 @@ function save() { //Сохраняет информацию о состояни�
   localStorage.setItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY, selectedListId)
 }
 
+function renderLanguage() {
+  const lang_pack =
+    htmlNode.getAttribute('lang') == 'ru' ?
+    LANGUAGE_PACK_RU : LANGUAGE_PACK_EN;
+  taskListTitle.innerText = lang_pack[0]
+  newListInput.setAttribute('placeholder', lang_pack[1])
+  taskCountContainer.querySelector(':first-child').innerText = lang_pack[2]
+  taskCountContainer.querySelector(':last-child').innerText = lang_pack[3]
+  newTaskInput.setAttribute('placeholder', lang_pack[4])
+  clearCompleteTasksButton.innerText = lang_pack[5]
+  deleteListButton.innerText = lang_pack[6]
+  closeListButton.innerText = lang_pack[7]
+  languageSelector.querySelector('p').innerHTML = lang_pack[8]
+}
+
 function render() { //Отображает выбранный лист
+
+  htmlNode.setAttribute('lang', localStorage.getItem(LOCAL_STORAGE_LANG_KEY))
+  renderLanguage();
+
   clearElement(listsContainer)
   renderLists()
 
@@ -130,7 +184,7 @@ function renderTasks(selectedList) { //Обновляет задачи
 function renderTaskCount(selectedList) { //Обновляет счётчик задач
   const incompleteTaskCount = selectedList.tasks.filter(task => !task.complete).length
   const taskString = incompleteTaskCount === 1 ? "task" : "tasks"
-  listCountElement.innerText = `Осталось ${incompleteTaskCount} задач`
+  listCountElement.innerText = incompleteTaskCount
 }
 
 function renderLists() {  //Обновляет листы
