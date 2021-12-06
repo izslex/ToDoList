@@ -80,10 +80,12 @@
 
     .delete-stuff button {
         background: var(--clr-primary-light);
-        padding: .5em 1em;
+        padding: .5em;
         border-radius: 1em;
-        width: 130px;
     }
+
+    .delete-stuff button { margin-left: 1em; }
+    .delete-stuff :last-child { margin-right: 1em; }
 
     .task:last-child { margin: 0; }
 
